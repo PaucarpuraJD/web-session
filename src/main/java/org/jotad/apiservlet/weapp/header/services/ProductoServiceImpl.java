@@ -1,45 +1,81 @@
 package org.jotad.apiservlet.weapp.header.services;
 
-import jakarta.enterprise.inject.Alternative;
-import org.jotad.apiservlet.weapp.header.models.Categoria;
-import org.jotad.apiservlet.weapp.header.models.Producto;
+import jakarta.inject.Inject;
+import org.jotad.apiservlet.weapp.header.Interceptor.TransactionalJpa;
+import org.jotad.apiservlet.weapp.header.configs.ProductoServicePrincipal;
+import org.jotad.apiservlet.weapp.header.configs.Service;
+import org.jotad.apiservlet.weapp.header.models.entities.Categoria;
+import org.jotad.apiservlet.weapp.header.models.entities.Producto;
+import org.jotad.apiservlet.weapp.header.repositories.CrudRepository;
+import org.jotad.apiservlet.weapp.header.repositories.RepositoryJpa;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-//@Alternative
+@Service
+@ProductoServicePrincipal
+@TransactionalJpa
 public class ProductoServiceImpl implements ProductoService{
+
+    @Inject
+    @RepositoryJpa
+    private CrudRepository<Producto> productoRepository;
+    @Inject
+    @RepositoryJpa
+    private CrudRepository<Categoria> categoriaRepository;
+
+
     @Override
     public List<Producto> listar() {
-        return Arrays.asList(new Producto(1L, "Laptop", "Computo", 3500),
-                new Producto(2L, "Mesa escritorio", "Oficina", 500),
-                new Producto(3L, "Teclado Mecanico", "Computo", 300));
+        try {
+            return productoRepository.listar();
+        } catch (Exception e) {
+            throw new Servicexception(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public Optional<Producto> porId(Long id) {
-        return listar().stream().filter(p -> p.getId().equals(id)).findAny();
+        try {
+            return Optional.ofNullable(productoRepository.porId(id));
+        } catch (Exception e) {
+            throw new Servicexception(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public void guardar(Producto producto) {
-
+        try {
+            productoRepository.guardar(producto);
+        } catch (Exception e) {
+            throw new Servicexception(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public void eliminar(Long id) {
-
+        try {
+            productoRepository.eliminar(id);
+        } catch (Exception e) {
+            throw new Servicexception(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public List<Categoria> listarCategoria() {
-        return null;
+        try {
+            return categoriaRepository.listar();
+        } catch (Exception e) {
+            throw new Servicexception(e.getMessage(), e.getCause());
+        }
     }
 
     @Override
     public Optional<Categoria> porIdCategoria(Long id) {
-        return Optional.empty();
+        try {
+            return Optional.ofNullable(categoriaRepository.porId(id));
+        } catch (Exception e) {
+            throw new Servicexception(e.getMessage(), e.getCause());
+        }
     }
-
 }

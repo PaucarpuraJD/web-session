@@ -1,6 +1,6 @@
 package org.jotad.apiservlet.weapp.header.services;
 
-import org.jotad.apiservlet.weapp.header.models.Usuario;
+import org.jotad.apiservlet.weapp.header.models.entities.Usuario;
 
 import java.util.List;
 import java.util.Optional;

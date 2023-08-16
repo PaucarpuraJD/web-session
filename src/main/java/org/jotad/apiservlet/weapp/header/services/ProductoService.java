@@ -1,7 +1,7 @@
 package org.jotad.apiservlet.weapp.header.services;
 
-import org.jotad.apiservlet.weapp.header.models.Categoria;
-import org.jotad.apiservlet.weapp.header.models.Producto;
+import org.jotad.apiservlet.weapp.header.models.entities.Categoria;
+import org.jotad.apiservlet.weapp.header.models.entities.Producto;
 
 import java.util.List;
 import java.util.Optional;

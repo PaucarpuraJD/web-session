@@ -7,6 +7,8 @@ import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import org.jotad.apiservlet.weapp.header.util.JpaUtil;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -40,5 +42,18 @@ public class ProducerResources {
     public void close(@Disposes @MysqlConn Connection connection) throws SQLException {
         connection.close();
         log.info("Cerrando conexion Mysql");
+    }
+
+    @Produces
+    @RequestScoped
+    private EntityManager beanEntityManager(){
+        return JpaUtil.getEntityManager();
+    }
+
+    public void close(@Disposes EntityManager entityManager){
+        if (entityManager.isOpen()){
+            entityManager.close();
+            log.info("Cerrando conexion del EntityManager");
+        }
     }
 }

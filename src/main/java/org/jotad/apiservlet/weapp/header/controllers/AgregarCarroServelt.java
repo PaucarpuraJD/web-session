@@ -1,7 +1,6 @@
 package org.jotad.apiservlet.weapp.header.controllers;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,11 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.jotad.apiservlet.weapp.header.configs.ProductoServicePrincipal;
 import org.jotad.apiservlet.weapp.header.models.Carro;
 import org.jotad.apiservlet.weapp.header.models.ItemCarro;
-import org.jotad.apiservlet.weapp.header.models.Producto;
+import org.jotad.apiservlet.weapp.header.models.entities.Producto;
 import org.jotad.apiservlet.weapp.header.services.ProductoService;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet("/carro/agregar")

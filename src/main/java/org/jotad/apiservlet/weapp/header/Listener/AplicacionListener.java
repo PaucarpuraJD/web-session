@@ -2,11 +2,8 @@ package org.jotad.apiservlet.weapp.header.Listener;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebListener;
-import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
-import org.jotad.apiservlet.weapp.header.models.Carro;
-import org.jotad.apiservlet.weapp.header.models.Producto;
 
 @WebListener
 public class AplicacionListener implements ServletContextListener,

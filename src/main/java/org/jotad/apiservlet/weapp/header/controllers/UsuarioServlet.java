@@ -6,14 +6,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.jotad.apiservlet.weapp.header.models.Usuario;
+import org.jotad.apiservlet.weapp.header.models.entities.Usuario;
 import org.jotad.apiservlet.weapp.header.services.LoginService;
 import org.jotad.apiservlet.weapp.header.services.LoginServiceSessionImpl;
 import org.jotad.apiservlet.weapp.header.services.UsuarioService;
-import org.jotad.apiservlet.weapp.header.services.UsuarioServiceImpl;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 

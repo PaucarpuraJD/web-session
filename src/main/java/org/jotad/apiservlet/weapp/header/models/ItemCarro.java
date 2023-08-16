@@ -1,5 +1,7 @@
 package org.jotad.apiservlet.weapp.header.models;
 
+import org.jotad.apiservlet.weapp.header.models.entities.Producto;
+
 import java.util.Objects;
 
 public class ItemCarro {

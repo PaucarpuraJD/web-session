@@ -37,6 +37,12 @@
             <artifactId>weld-servlet-core</artifactId>
             <version>4.0.1.SP1</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core-jakarta</artifactId>
+            <version>5.5.8.Final</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>

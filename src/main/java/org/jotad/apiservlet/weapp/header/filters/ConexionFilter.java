@@ -5,7 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jotad.apiservlet.weapp.header.configs.MysqlConn;
-import org.jotad.apiservlet.weapp.header.services.ServiceJdbcException;
+import org.jotad.apiservlet.weapp.header.services.Servicexception;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -30,7 +30,7 @@ public class ConexionFilter implements Filter {
                 //request.setAttribute("conn", connRequest);
                 chain.doFilter(request, response);
                 connRequest.commit();
-            }catch (SQLException | ServiceJdbcException e){
+            }catch (SQLException | Servicexception e){
                 connRequest.rollback();
                 ((HttpServletResponse)response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 e.printStackTrace();

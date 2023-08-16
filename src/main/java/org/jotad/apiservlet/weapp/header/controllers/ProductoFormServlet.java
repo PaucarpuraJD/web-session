@@ -1,15 +1,14 @@
 package org.jotad.apiservlet.weapp.header.controllers;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jotad.apiservlet.weapp.header.configs.ProductoServicePrincipal;
-import org.jotad.apiservlet.weapp.header.models.Categoria;
-import org.jotad.apiservlet.weapp.header.models.Producto;
+import org.jotad.apiservlet.weapp.header.models.entities.Categoria;
+import org.jotad.apiservlet.weapp.header.models.entities.Producto;
 import org.jotad.apiservlet.weapp.header.services.ProductoService;
 
 
@@ -99,7 +98,7 @@ public class ProductoFormServlet extends HttpServlet {
         try {
             id = Long.valueOf(req.getParameter("id"));
         }catch (NumberFormatException e){
-            id = 0L;
+            id = null;
         }
         Producto producto = new Producto();
         producto.setId(id);
@@ -107,7 +106,6 @@ public class ProductoFormServlet extends HttpServlet {
         producto.setPrecio(precio);
         producto.setSku(sku);
         producto.setFechaRegistro(fecha);
-
         Categoria categoria = new Categoria();
         categoria.setId(categoriaid);
         producto.setCategoria(categoria);

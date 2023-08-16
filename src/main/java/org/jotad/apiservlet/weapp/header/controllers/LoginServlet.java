@@ -4,12 +4,11 @@ import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.jotad.apiservlet.weapp.header.models.Usuario;
+import org.jotad.apiservlet.weapp.header.models.entities.Usuario;
 import org.jotad.apiservlet.weapp.header.services.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet({"/login", "/login.html"})
